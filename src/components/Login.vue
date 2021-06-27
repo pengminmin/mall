@@ -77,9 +77,17 @@ export default {
     // 登录
     login () {
       // 表单验证
-      this.$refs.loginFromRef.validate(valid => {
+      this.$refs.loginFromRef.validate(async valid => {
         // valid 表单验证结果值
-        console.log(valid)
+        if (!valid) {
+          return
+        }
+        // 发送 post 请求
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.meta.status !== 200) {
+          return console.log('登录失败')
+        }
+        console.log('登录成功')
       })
     }
   }
