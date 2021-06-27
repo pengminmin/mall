@@ -88,6 +88,10 @@ export default {
           return this.$message.error('登录失败')
         }
         this.$message.success('登录成功')
+        // 保存 token 到 sessionStorage 中
+        window.sessionStorage.setItem('token', res.data.token)
+        // 页面跳转
+        await this.$router.push('/home')
       })
     }
   }
