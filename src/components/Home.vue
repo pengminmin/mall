@@ -18,17 +18,17 @@
           text-color='#fff'
           active-text-color='#ffd04b'>
           <!-- 一级菜单 -->
-          <el-submenu index='1'>
+          <el-submenu :index="item.id + ''" v-for='item in menuList' :key='item.id'>
             <!-- 一级菜单的模板区域 -->
             <template slot='title'>
               <i class='el-icon-location'></i>
-              <span>导航一</span>
+              <span>{{ item.authName }}</span>
             </template>
 
-            <el-menu-item index='1-4-1'>
+            <el-menu-item :index="subItem.id + ''" v-for='subItem in item.children' :key='subItem.id'>
               <template slot='title'>
                 <i class='el-icon-location'></i>
-                <span>导航一</span>
+                <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -47,7 +47,58 @@ export default {
   data () {
     return {
       // 左侧菜单数据
-      menuList: []
+      menuList: [
+        {
+          id: 125,
+          authName: '用户管理',
+          children: [
+            {
+              id: 210,
+              authName: '用户列表'
+            }
+          ]
+        },
+        {
+          id: 126,
+          authName: '权限管理',
+          children: [
+            {
+              id: 220,
+              authName: '角色列表'
+            },
+            {
+              id: 221,
+              authName: '权限列表'
+            }
+          ]
+        },
+        {
+          id: 127,
+          authName: '商品管理',
+          children: [
+            {
+              id: 230,
+              authName: '商品列表'
+            },
+            {
+              id: 231,
+              authName: '分类参数'
+            },
+            {
+              id: 232,
+              authName: '商品分类'
+            }
+          ]
+        },
+        {
+          id: 128,
+          authName: '订单管理'
+        },
+        {
+          id: 129,
+          authName: '数据管理'
+        }
+      ]
     }
   },
   created () {
