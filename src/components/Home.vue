@@ -20,7 +20,8 @@
           active-text-color='#409EFF'
           unique-opened
           :collapse='isCollapse'
-          :collapse-transition='false'>
+          :collapse-transition='false'
+          router>
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for='item in menuList' :key='item.id'>
             <!-- 一级菜单的模板区域 -->
@@ -29,7 +30,7 @@
               <span>{{ item.authName }}</span>
             </template>
 
-            <el-menu-item :index="subItem.id + ''" v-for='subItem in item.children' :key='subItem.id'>
+            <el-menu-item :index="'/' + subItem.path" v-for='subItem in item.children' :key='subItem.id'>
               <template slot='title'>
                 <i class='el-icon-menu'></i>
                 <span>{{ subItem.authName }}</span>
@@ -61,7 +62,8 @@ export default {
           children: [
             {
               id: 210,
-              authName: '用户列表'
+              authName: '用户列表',
+              path: 'userList'
             }
           ]
         },
@@ -71,11 +73,13 @@ export default {
           children: [
             {
               id: 220,
-              authName: '角色列表'
+              authName: '角色列表',
+              path: 'roleList'
             },
             {
               id: 221,
-              authName: '权限列表'
+              authName: '权限列表',
+              path: 'permissionList'
             }
           ]
         },
@@ -85,15 +89,18 @@ export default {
           children: [
             {
               id: 230,
-              authName: '商品列表'
+              authName: '商品列表',
+              path: 'permissionList'
             },
             {
               id: 231,
-              authName: '分类参数'
+              authName: '分类参数',
+              path: 'permissionList'
             },
             {
               id: 232,
-              authName: '商品分类'
+              authName: '商品分类',
+              path: 'permissionList'
             }
           ]
         },
@@ -103,7 +110,8 @@ export default {
           children: [
             {
               id: 240,
-              authName: '订阅列表'
+              authName: '订阅列表',
+              path: 'permissionList'
             }
           ]
         },
@@ -113,7 +121,8 @@ export default {
           children: [
             {
               id: 250,
-              authName: '数据列表'
+              authName: '数据列表',
+              path: 'permissionList'
             }
           ]
         }
