@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   // 获取 token
   const tokenStr = window.sessionStorage.getItem('token')
   if (!tokenStr) {
-    return next('/login')
+    // return next('/login')
   }
   next()
 })
