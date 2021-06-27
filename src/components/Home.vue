@@ -16,7 +16,7 @@
         <el-menu
           background-color='#333744'
           text-color='#fff'
-          active-text-color='#ffd04b'>
+          active-text-color='#409EFF' unique-opened>
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for='item in menuList' :key='item.id'>
             <!-- 一级菜单的模板区域 -->
@@ -27,7 +27,7 @@
 
             <el-menu-item :index="subItem.id + ''" v-for='subItem in item.children' :key='subItem.id'>
               <template slot='title'>
-                <i class='el-icon-location'></i>
+                <i class='el-icon-menu'></i>
                 <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
@@ -154,6 +154,10 @@ export default {
 
 .el-aside {
   background-color: #333744;
+
+  .el-menu {
+    border-right: none;
+  }
 }
 
 .el-main {
